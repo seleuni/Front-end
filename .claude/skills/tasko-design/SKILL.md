@@ -1,4 +1,3 @@
-<!-- .claude/skills/tasko-design/SKILL.md (새 파일) -->
 ---
 name: tasko-design
 description: Tasko 화면을 만들거나 고칠 때 쓴다. 색·글꼴·간격·모서리 규칙과 다크 모드 색을 담고 있다.
