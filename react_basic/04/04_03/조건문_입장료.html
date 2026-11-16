@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .calulator-card{
+
+    }
+
+    h2{
+    
+    }
+  </style>
+</head>
+
+<body>
+  <div class="calulator-card">
+    <h2>🎢 놀이공원 입장료 계산기</h2>
+    <div class="input-group">
+      <label for="">나이를 입력하세요.</label>
+      <input type="number" id="ageInput"
+      placeholder="예)25" min="0" max="150"/>
+      <button class="btn" onclick="calculateFee">입장료 계산</button>
+      <div class="result-box" id="resultDisplay">
+        나이를 입력하고 버튼을 누르세요. </div>
+    </div>
+  </div>
+
+  <script>
+    function calculateFee(){
+      const ageInput=document.getElementById
+      ("ageInput").value;
+
+      const age=Number(ageInput);
+      // alert('입력받은 나이는 ${age}입니다');
+
+      if (8 && age>0){
+        message = "어린이는 무료입니다.";
+      } else if (age<=14 && age>0){
+        message = "청소년은 7,000원입니다.";
+      } else if(age<=64 && age>0){
+        message = "성인은 10,000원입니다.";
+      } else if(age>65 && age>0){
+        message = "경로자는 5,000원입니다.";
+      } else{
+        message="입력값이 잘못 됬습니다."
+      }
+      const resultDisplay = document.
+      getElementById("resultDisplay");
+      
+      resultDisplay.innerText = message;
+    }
+  </script>
+</body>
+</html>

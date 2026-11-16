@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>선택자</title>
+    <link rel="stylesheet" href="3_2_css_선택자_1.css">
+    </head>
+  <body>
+     <h1 id="title">ID 선택자 제목</h1>
+     <h1> H1 제목 </h1>
+     <h2>H2 제목</h2>
+     <p>p:모든</p>
+     <p class="highlight">p class=highligte</p>
+     <span class="highlight">스펜 class=highlight</span>
+     <h3>그룹 선택자</h3>
+     <hr/>
+    
+     <div class="card">          <!-- 할머니 -->
+       <p>자식 p</p>              <!-- 딸: .card > p 와 .card p 모두 해당 -->
+       <div>                      <!-- 딸 -->
+        <p>손자 p</p>            <!-- 손녀: .card p 만 해당 -->
+       </div>
+        </div>
+     <p>둘째아들</p>
+    <div>
+       <p>둘째아들의 맏아들</p>
+       <p>둘째아들의 큰딸</p>
+   </div>
+
+   <div>
+    <div class="btn">홍길동</div>
+    <button class="btn">홍길동</button>
+
+   </div>
+
+
+
+  </body>
+  </html>

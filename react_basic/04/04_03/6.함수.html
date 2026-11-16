@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function greet(name){
+      return '안녕, ${name}^^';
+    }
+
+    const greet2=function(name){
+      return '안녕, ${name}^^';
+    }
+
+    const greet = (name) => '안녕, ${name}^^';
+
+    let msg = greet("홍길동");
+    console.log(msg);
+
+    msg = greet2("임꺽정");
+    console.log(msg);
+
+    msg = greet3("정수정")
+    console.log(msg);
+
+
+  // test();  /*에러 찾기*/
+  //  try {
+  //    console.log(localVar);
+  //  } catch(error){
+ //     console.error("에러발생 =>"+error.name+ " : " + error.message);
+  //  }
+  </script>
+</body>
+</html>

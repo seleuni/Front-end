@@ -1,0 +1,16 @@
+/* display 속성과 요소의 표시 방식 */
+.inline-block {
+  display: inline-block;
+  width: 160px;
+  height: 60px;
+  background: #fef3c7;
+}
+
+/* overflow와 콘텐츠 넘침 처리 */
+.box {
+  height: 100px;
+  overflow: auto; /* 내용이 넘치면 스크롤바 생김 */
+}
+
+/* 결과를 보기 위한 보조 스타일 */
+.box { width: 300px; margin-top: 16px; border: 1px solid #999; }
