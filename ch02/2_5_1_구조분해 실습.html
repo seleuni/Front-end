@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>구조분해 실습</title>
+</head>
+<body>
+  <script>
+    // const-let.js
+    const taskTitle = "리액트 공부하기"; //재할당 안 할 값은 항상 const
+    let remainingCount = 5; //값이 바뀔 걸 아는 경우만 let
+
+    remainingCount = 4;
+    console.log(taksTitle, remainingCount);
+
+    try {
+      taskTitle ="다른 제목";
+    } catch (error) {
+      console.log("오류:", error.message);
+    }
+
+    let tasks = [{title: "공부하기"}, isDone: false];
+    const before=tasks;
+    tasks[0].isDone=tru;
+    console.log("직접 수정 후 같은 배열인가?", before ===task);
+
+    const updateTasks = tasks.map((task) =>
+      task.title === "공부하기" ? {...task, isDone: true}: task
+  );
+  console.log("새로 만든 뒤 같은 배열인가?", tasks === updatedTasks); //false
+
+  let totlalScore =0;
+  for (const task of tasks){
+    if (task.isDone) totalScore += 10;
+  }
+  console.log("점수:", totalScore); //10
+
+    //2.3 실습 다썻는데 오류 남 ㅅㅂ 볼 시간돋안주고 어캐 실습하라는거ㅣ;;;;;
+
+
+</body>
+</html>

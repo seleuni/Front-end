@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>구조분해</title>
+</head>
+<body>
+  <script>
+    const task = {id:1, title:"리액트 공부하기", isDone:false};
+    //구조분해방식
+    const{title,isDone}=task;
+    console.log(title,isDone);
+
+    //배열방식 (기존방식)
+    const numbers =[1,2,3];
+    console.log(numbers[0], numbers[1], numbers[2]);
+
+    //구조분해방식
+    const[first,second,third]=numbers;
+    console.log(first,second,third);
+
+    //배열방식 (기존방식)
+    funciton printTask1(task){
+      console.log(task.title) //E또;;;;
+    }
+    
+    //구조분해방식
+    function printTask2({title,isDone}){
+      console.log(title,isDone);
+    }
+    printTask2(task);
+  </script>
+</body>
+</html>
