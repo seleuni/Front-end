@@ -1,0 +1,1814 @@
+<!-- Tasko 모바일 할 일 상세/수정 화면 (iPhone 16) -->
+<!DOCTYPE html>
+
+<html lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tasko 모바일 할 일 상세/수정 화면 (iPhone 16)</title>
+<!-- Tailwind CSS v3 CDN with forms plugin -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Pretendard Font -->
+<link as="style" crossorigin="" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script data-purpose="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'sans-serif'],
+          },
+          colors: {
+            tasko: {
+              primary: '#1EA65C',
+              'primary-hover': '#178449',
+              'primary-light': '#E8F7EE',
+              bg: '#F8F9FA',
+              surface: '#FFFFFF',
+              border: '#E9ECEF',
+              text: '#212529',
+              secondary: '#495057',
+              muted: '#868E96',
+              destructive: '#FA5252',
+              'destructive-light': '#FFF5F5',
+              'destructive-border': '#FFA8A8',
+              yellow: '#FAB005'
+            }
+          }
+        }
+      }
+    }
+  </script>
+<!-- Custom Core Styles -->
+<style data-purpose="typography">
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  </style>
+<style data-purpose="device-frame">
+    /* Subtle inner shadow for device depth matching snapshot environment */
+    .iphone-frame-shadow {
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 255, 255, 0.08);
+    }
+    /* Hide scrollbars for slick native look */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="bg-[#1A1E29] min-h-screen flex items-center justify-center p-4 sm:p-8">
+<!-- BEGIN: PhoneContainer -->
+<!-- iPhone 16 Frame Container matching other screen snapshots -->
+<div class="w-[393px] min-h-[852px] h-[852px] bg-tasko-bg rounded-[48px] relative overflow-hidden flex flex-col iphone-frame-shadow border-[6px] border-[#2C3240] select-none" data-purpose="iphone-16-mockup" id="iphone-16-mockup">
+<!-- BEGIN: DeviceStatusBar -->
+<!-- Native iOS 16 Dynamic Island & Status Bar Header -->
+<header class="w-full pt-3 px-7 flex justify-between items-center z-30 shrink-0 select-none">
+<!-- Current Time -->
+<span class="text-[14px] font-semibold tracking-tight text-tasko-text">9:41</span>
+<!-- Dynamic Island Capsule -->
+<div class="w-[96px] h-[26px] bg-black rounded-full flex items-center justify-end pr-2.5">
+<div class="w-2.5 h-2.5 rounded-full bg-[#111] border border-[#222]"></div>
+</div>
+<!-- Status Icons: Cellular, WiFi, Battery -->
+<div class="flex items-center space-x-1.5 text-tasko-text">
+<!-- Cellular Signal Icon -->
+<svg class="w-4 h-3 fill-current" viewbox="0 0 18 12">
+<rect height="4" rx="0.5" width="3" x="0" y="8"></rect>
+<rect height="7" rx="0.5" width="3" x="5" y="5"></rect>
+<rect height="10" rx="0.5" width="3" x="10" y="2"></rect>
+<rect height="12" rx="0.5" width="3" x="15" y="0"></rect>
+</svg>
+<!-- WiFi Icon -->
+<svg class="w-3.5 h-3 fill-current" viewbox="0 0 16 12">
+<path d="M8 2.5C10.7 2.5 13.1 3.6 14.8 5.4L16 4.1C13.9 1.9 11.1 0.5 8 0.5C4.9 0.5 2.1 1.9 0 4.1L1.2 5.4C2.9 3.6 5.3 2.5 8 2.5ZM8 6.5C9.7 6.5 11.2 7.2 12.3 8.3L13.5 7.1C12.1 5.7 10.1 4.8 8 4.8C5.9 4.8 3.9 5.7 2.5 7.1L3.7 8.3C4.8 7.2 6.3 6.5 8 6.5ZM8 10C8.8 10 9.5 10.7 9.5 11.5C9.5 12.3 8.8 13 8 13C7.2 13 6.5 12.3 6.5 11.5C6.5 10.7 7.2 10 8 10Z"></path>
+</svg>
+<!-- Battery Icon -->
+<svg class="w-6 h-3 fill-current" viewbox="0 0 24 12">
+<rect fill="none" height="11" rx="3.5" stroke="currentColor" stroke-width="1" width="20" x="0.5" y="0.5"></rect>
+<rect fill="currentColor" height="8" rx="2" width="14" x="2" y="2"></rect>
+<path d="M22 4C22.6 4.5 23 5.2 23 6C23 6.8 22.6 7.5 22 8V4Z" fill="currentColor"></path>
+</svg>
+</div>
+</header>
+<!-- END: DeviceStatusBar -->
+<!-- BEGIN: TopAppBar -->
+<!-- Navigation Bar: Back button, Screen Title, Delete Button -->
+<nav class="w-full px-5 py-3 flex items-center justify-between bg-tasko-bg z-20 shrink-0" data-purpose="top-app-bar">
+<!-- Back Button -->
+<button aria-label="뒤로 가기" class="w-10 h-10 -ml-2 flex items-center justify-center rounded-full hover:bg-gray-200/60 active:scale-95 transition-all text-tasko-text" type="button">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" viewbox="0 0 24 24">
+<polyline points="15 18 9 12 15 6"></polyline>
+</svg>
+</button>
+<!-- Center Title -->
+<h1 class="text-[17px] font-bold text-tasko-text tracking-tight">할 일 상세</h1>
+<!-- Delete Button (Destructive Color) -->
+<button aria-label="할 일 삭제" class="w-10 h-10 -mr-2 flex items-center justify-center rounded-full hover:bg-red-50 active:scale-95 transition-all text-tasko-destructive" type="button">
+<svg class="w-[22px] h-[22px]" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.9" viewbox="0 0 24 24">
+<polyline points="3 6 5 6 21 6"></polyline>
+<path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+<line x1="10" x2="10" y1="11" y2="17"></line>
+<line x1="14" x2="14" y1="11" y2="17"></line>
+</svg>
+</button>
+</nav>
+<!-- END: TopAppBar -->
+<!-- BEGIN: MainContent -->
+<!-- Scrollable content area containing forms and details -->
+<main class="flex-1 overflow-y-auto px-5 pt-1 pb-4 no-scrollbar flex flex-col justify-between">
+<!-- Top Section: Interactive form controls -->
+<div class="space-y-4">
+<!-- Completion Check Box Card -->
+<!-- Allows toggling task completion state directly inside details -->
+<section class="bg-tasko-surface rounded-2xl p-4 border border-tasko-border flex items-center justify-between shadow-[0_1px_2px_rgba(0,0,0,0.03)] cursor-pointer hover:border-gray-300 transition-colors" data-purpose="completion-toggle-card">
+<div class="flex items-center gap-3">
+<!-- Unchecked circular status indicator -->
+<div class="w-[22px] h-[22px] rounded-full border-2 border-tasko-border bg-tasko-surface flex items-center justify-center transition-all">
+<span class="sr-only">완료 미체크</span>
+</div>
+<span class="text-[15px] font-medium text-tasko-text">완료로 표시</span>
+</div>
+<span class="text-[12px] font-medium text-tasko-muted bg-gray-100 px-2 py-0.5 rounded-md">진행 중</span>
+</section>
+<!-- Edit Form Section (Matching BottomSheet Structure from SCREEN_7) -->
+<section class="bg-tasko-surface rounded-2xl p-4 border border-tasko-border shadow-[0_1px_2px_rgba(0,0,0,0.03)] space-y-4" data-purpose="edit-inputs-section">
+<!-- Field 1: 할 일 제목 (Task Title) -->
+<div class="space-y-1.5">
+<label class="block text-[13px] font-semibold text-tasko-secondary" for="task-title-input">
+              할 일 제목 <span class="text-tasko-destructive">*</span>
+</label>
+<input class="w-full h-12 px-3.5 rounded-xl border border-tasko-border bg-tasko-surface text-tasko-text font-medium text-[15px] placeholder-tasko-muted focus:border-tasko-primary focus:ring-1 focus:ring-tasko-primary focus:outline-none transition-colors" id="task-title-input" type="text" value="저녁 운동 30분"/>
+</div>
+<!-- Field 2: 우선순위 선택 (Priority Selection) -->
+<div class="space-y-1.5">
+<label class="block text-[13px] font-semibold text-tasko-secondary">
+              우선순위
+            </label>
+<!-- 3-Segment priority buttons with '높음' selected -->
+<div class="grid grid-cols-3 gap-2">
+<!-- Option: 높음 (Selected - Red/Destructive Accent) -->
+<button class="h-11 rounded-xl font-semibold text-[14px] flex items-center justify-center border border-tasko-destructive-border bg-tasko-destructive-light text-tasko-destructive shadow-sm" type="button">
+<span class="w-1.5 h-1.5 rounded-full bg-tasko-destructive mr-1.5"></span>
+                높음
+              </button>
+<!-- Option: 중간 (Unselected) -->
+<button class="h-11 rounded-xl font-medium text-[14px] flex items-center justify-center border border-tasko-border bg-tasko-surface text-tasko-secondary hover:bg-gray-50 transition-colors" type="button">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-400 mr-1.5 opacity-60"></span>
+                중간
+              </button>
+<!-- Option: 낮음 (Unselected) -->
+<button class="h-11 rounded-xl font-medium text-[14px] flex items-center justify-center border border-tasko-border bg-tasko-surface text-tasko-secondary hover:bg-gray-50 transition-colors" type="button">
+<span class="w-1.5 h-1.5 rounded-full bg-tasko-primary mr-1.5 opacity-60"></span>
+                낮음
+              </button>
+</div>
+</div>
+<!-- Field 3: 카테고리 선택 (Category Dropdown) -->
+<div class="space-y-1.5">
+<label class="block text-[13px] font-semibold text-tasko-secondary" for="category-select">
+              카테고리
+            </label>
+<div class="relative">
+<select class="w-full h-12 px-3.5 pr-10 rounded-xl border border-tasko-border bg-tasko-surface text-tasko-text font-medium text-[15px] appearance-none focus:border-tasko-primary focus:ring-1 focus:ring-tasko-primary focus:outline-none transition-colors cursor-pointer" id="category-select">
+<option selected="" value="health">#건강</option>
+<option value="life">#생활</option>
+<option value="study">#공부</option>
+</select>
+<!-- Dropdown Chevron Icon -->
+<div class="absolute inset-y-0 right-0 flex items-center pr-3.5 pointer-events-none text-tasko-secondary">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<polyline points="6 9 12 15 18 9"></polyline>
+</svg>
+</div>
+</div>
+</div>
+<!-- Field 4: 마감일 선택 입력 (Due Date Input) -->
+<div class="space-y-1.5">
+<label class="block text-[13px] font-semibold text-tasko-secondary" for="due-date-input">
+              마감일
+            </label>
+<div class="relative">
+<input class="w-full h-12 px-3.5 pr-10 rounded-xl border border-tasko-border bg-tasko-surface text-tasko-text font-medium text-[15px] focus:border-tasko-primary focus:ring-1 focus:ring-tasko-primary focus:outline-none transition-colors" id="due-date-input" type="text" value="오늘 19:00"/>
+<!-- Calendar / Clock Icon -->
+<div class="absolute inset-y-0 right-0 flex items-center pr-3.5 pointer-events-none text-tasko-secondary">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24">
+<rect height="18" rx="2" ry="2" width="18" x="3" y="4"></rect>
+<line x1="16" x2="16" y1="2" y2="6"></line>
+<line x1="8" x2="8" y1="2" y2="6"></line>
+<line x1="3" x2="21" y1="10" y2="10"></line>
+</svg>
+</div>
+</div>
+</div>
+<!-- Field 5: 중요 표시 (Star / Importance Toggle Row) -->
+<div class="pt-1">
+<div class="flex items-center justify-between p-3 rounded-xl bg-tasko-bg border border-tasko-border">
+<div class="flex items-center gap-2.5">
+<!-- Star Icon (Filled Gold/Yellow) -->
+<div class="w-8 h-8 rounded-lg bg-amber-50 flex items-center justify-center shrink-0">
+<svg class="w-5 h-5 text-tasko-yellow fill-current" viewbox="0 0 24 24">
+<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+</svg>
+</div>
+<div>
+<div class="text-[14px] font-semibold text-tasko-text">중요 할 일로 표시</div>
+<div class="text-[11px] text-tasko-muted">목록 상단에 강조 표시됩니다</div>
+</div>
+</div>
+<!-- Active iOS Toggle Switch with Primary #1EA65C -->
+<label class="relative inline-flex items-center cursor-pointer select-none">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-gray-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-tasko-primary"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- Creation Metadata Caption -->
+<div class="text-center pt-0.5">
+<span class="text-[12px] font-normal text-tasko-muted tracking-tight">2026.11.10 생성</span>
+</div>
+</div>
+<!-- BEGIN: BottomActionArea -->
+<!-- Bottom Save Action Button -->
+<div class="pt-4 pb-1">
+<button class="w-full h-[50px] bg-tasko-primary hover:bg-tasko-primary-hover active:scale-[0.99] text-white font-bold text-[16px] rounded-xl shadow-sm transition-all flex items-center justify-center" type="button">
+          저장하기
+        </button>
+</div>
+<!-- END: BottomActionArea -->
+</main>
+<!-- END: MainContent -->
+<!-- BEGIN: HomeIndicator -->
+<!-- Native iPhone 16 Home Indicator -->
+<footer class="w-full pb-2 pt-1 flex justify-center shrink-0 z-30 select-none">
+<div class="w-36 h-1 bg-tasko-text rounded-full opacity-80"></div>
+</footer>
+<!-- END: HomeIndicator -->
+</div>
+<!-- END: PhoneContainer -->
+</body></html>
+
+<!-- Tasko 모바일 전체 할 일 목록 화면 (iPhone 16) -->
+<!DOCTYPE html><html lang="ko"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tasko 전체 할 일 목록 화면 (iPhone 16)</title>
+  <!-- Pretendard Font -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              primary: '#1EA65C',
+              primaryDark: '#178449',
+              surfaceLight: '#E8F7EE',
+              bg: '#F8F9FA',
+              surface: '#FFFFFF',
+              border: '#E9ECEF',
+              textPrimary: '#212529',
+              textSecondary: '#495057',
+              textMuted: '#868E96',
+              destructive: '#FA5252',
+            }
+          },
+          boxShadow: {
+            'fab': '0 4px 14px rgba(30, 166, 92, 0.35)',
+            'card': '0 1px 3px rgba(0, 0, 0, 0.04)',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #0f172a;
+      margin: 0;
+      padding: 32px 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Hide scrollbar for clean horizontal swipe */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- iPhone 16 Frame Outer Container -->
+  <div class="relative w-[393px] h-[852px] bg-[#F8F9FA] rounded-[52px] shadow-2xl border-[10px] border-[#1e293b] flex flex-col overflow-hidden text-[#212529]">
+    
+    <!-- iPhone 16 Dynamic Island & Status Bar Area -->
+    <div class="relative w-full pt-3 px-7 pb-2 flex justify-between items-center z-30 select-none bg-[#F8F9FA]">
+      <span class="text-[14px] font-semibold tracking-tight text-[#212529]">9:41</span>
+      <!-- Dynamic Island Pill -->
+      <div class="absolute left-1/2 -translate-x-1/2 top-2.5 w-[120px] h-[34px] bg-black rounded-full flex items-center justify-between px-3 pointer-events-none">
+        <div class="w-2.5 h-2.5 rounded-full bg-[#111] border border-neutral-800"></div>
+        <div class="w-3 h-3 rounded-full bg-[#0a0a14] border border-[#1a1a2e] flex items-center justify-center">
+          <div class="w-1 h-1 rounded-full bg-[#1e293b]"></div>
+        </div>
+      </div>
+      <!-- Right Status Icons (Cellular, Wifi, Battery) -->
+      <div class="flex items-center gap-1.5 text-[#212529]">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 18.25c-.2.2-.2.51 0 .71.2.2.51.2.71 0l.64-.64C7.23 19.34 9.48 20 12 20c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 15c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z" opacity="0.3"></path>
+          <path d="M12 6c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 10c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"></path>
+        </svg>
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98A16.88 16.88 0 0 0 12 4z"></path>
+        </svg>
+        <div class="w-6 h-3 rounded-[4px] border border-[#212529] p-0.5 flex items-center">
+          <div class="w-full h-full bg-[#212529] rounded-[2px]"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1. Sticky Top Header: Chevron-left (뒤로가기), "전체 할 일", Search icon -->
+    <header class="sticky top-0 z-20 bg-[#F8F9FA]/95 backdrop-blur-md px-5 py-3 border-b border-[#E9ECEF] flex items-center justify-between select-none">
+      <!-- Back button -->
+      <button type="button" aria-label="대시보드로 돌아가기" class="w-10 h-10 -ml-2 rounded-xl flex items-center justify-center text-[#212529] hover:bg-[#E9ECEF]/70 active:scale-95 transition-all">
+        <svg class="w-6 h-6 stroke-[#212529]" fill="none" viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15 19l-7-7 7-7"></path>
+        </svg>
+      </button>
+
+      <!-- Center Title -->
+      <h1 class="text-[18px] font-bold tracking-tight text-[#212529] text-center">전체 할 일</h1>
+
+      <!-- Right Search icon -->
+      <button type="button" aria-label="할 일 검색" class="w-10 h-10 -mr-2 rounded-xl flex items-center justify-center text-[#212529] hover:bg-[#E9ECEF]/70 active:scale-95 transition-all">
+        <svg class="w-5 h-5 stroke-[#212529]" fill="none" viewBox="0 0 24 24" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="M21 21l-4.35-4.35"></path>
+        </svg>
+      </button>
+    </header>
+
+    <!-- 2. Dual Horizontal Filter Chips (가로 터치 스크롤) -->
+    <div class="bg-[#F8F9FA] px-5 pt-3.5 pb-2.5 space-y-2.5 border-b border-[#E9ECEF]/60 select-none">
+      <!-- 1줄: 상태 필터 (전체 8 / 진행 중 4 / 완료 4 / 중요 1) -->
+      <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
+        <!-- FilterChip Active: 전체 8 -->
+        <button type="button" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#1EA65C] text-white shadow-sm shrink-0 active:scale-95 transition-all">
+          <span>전체</span>
+          <span class="w-4 h-4 rounded-full bg-white/25 text-[11px] flex items-center justify-center">8</span>
+        </button>
+        <!-- FilterChip Inactive: 진행 중 4 -->
+        <button type="button" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium bg-[#FFFFFF] border border-[#E9ECEF] text-[#495057] hover:border-[#1EA65C] hover:text-[#1EA65C] shrink-0 active:scale-95 transition-all">
+          <span>진행 중</span>
+          <span class="text-[#868E96] text-[11px]">4</span>
+        </button>
+        <!-- FilterChip Inactive: 완료 4 -->
+        <button type="button" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium bg-[#FFFFFF] border border-[#E9ECEF] text-[#495057] hover:border-[#1EA65C] hover:text-[#1EA65C] shrink-0 active:scale-95 transition-all">
+          <span>완료</span>
+          <span class="text-[#868E96] text-[11px]">4</span>
+        </button>
+        <!-- FilterChip Inactive: 중요 1 -->
+        <button type="button" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium bg-[#FFFFFF] border border-[#E9ECEF] text-[#495057] hover:border-[#1EA65C] hover:text-[#1EA65C] shrink-0 active:scale-95 transition-all">
+          <svg class="w-3.5 h-3.5 fill-[#FA5252] text-[#FA5252]" viewBox="0 0 24 24">
+            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>
+          </svg>
+          <span>중요</span>
+          <span class="text-[#868E96] text-[11px]">1</span>
+        </button>
+      </div>
+
+      <!-- 2줄: 카테고리 필터 (전체 / #생활 / #건강 / #공부) -->
+      <div class="flex items-center gap-1.5 overflow-x-auto no-scrollbar py-0.5">
+        <button type="button" class="px-3 py-1 rounded-full text-[12px] font-semibold bg-[#212529] text-white shrink-0 active:scale-95 transition-all">
+          전체
+        </button>
+        <button type="button" class="px-3 py-1 rounded-full text-[12px] font-medium bg-[#FFFFFF] border border-[#E9ECEF] text-[#495057] hover:border-[#1EA65C] hover:text-[#1EA65C] shrink-0 active:scale-95 transition-all">
+          #생활
+        </button>
+        <button type="button" class="px-3 py-1 rounded-full text-[12px] font-medium bg-[#FFFFFF] border border-[#E9ECEF] text-[#495057] hover:border-[#1EA65C] hover:text-[#1EA65C] shrink-0 active:scale-95 transition-all">
+          #건강
+        </button>
+        <button type="button" class="px-3 py-1 rounded-full text-[12px] font-medium bg-[#FFFFFF] border border-[#E9ECEF] text-[#495057] hover:border-[#1EA65C] hover:text-[#1EA65C] shrink-0 active:scale-95 transition-all">
+          #공부
+        </button>
+      </div>
+    </div>
+
+    <!-- 3. 태스크 리스트 (세로 flex-col gap-3, 스크롤 가능) -->
+    <main class="flex-1 overflow-y-auto px-5 py-4 space-y-3 pb-24 no-scrollbar">
+      
+      <!-- 1. 택배 반품 신청 / #생활 / 높음 / 미완료 / 어제 마감 (기한 지남: Destructive #FA5252 색 캡션) -->
+      <div class="bg-[#FFFFFF] border border-[#E9ECEF] rounded-[14px] p-4 shadow-card hover:border-[#1EA65C] transition-all flex items-start gap-3 relative group">
+        <!-- Unchecked Checkbox -->
+        <button type="button" aria-label="완료 처리" class="w-5 h-5 mt-0.5 rounded-full border-2 border-[#868E96] flex items-center justify-center hover:border-[#1EA65C] transition-colors shrink-0">
+        </button>
+        
+        <div class="flex-1 min-w-0">
+          <!-- Badges line -->
+          <div class="flex items-center gap-1.5 mb-1.5">
+            <!-- PriorityBadge: 높음 (Destructive) -->
+            <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-semibold bg-[#FA5252]/10 text-[#FA5252]">
+              높음
+            </span>
+            <!-- Tag Badge: #생활 -->
+            <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-medium bg-[#F8F9FA] border border-[#E9ECEF] text-[#495057]">
+              #생활
+            </span>
+          </div>
+
+          <!-- Task Title -->
+          <h2 class="text-[14px] font-semibold text-[#212529] tracking-tight truncate">
+            택배 반품 신청
+          </h2>
+
+          <!-- Due Date: 기한 지남 (Destructive #FA5252) -->
+          <div class="flex items-center gap-1.5 mt-2 text-[12px] font-medium text-[#FA5252]">
+            <svg class="w-3.5 h-3.5 stroke-[#FA5252]" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <span>어제 마감 (기한 지남)</span>
+          </div>
+        </div>
+
+        <!-- More options button -->
+        <button type="button" aria-label="메뉴 더보기" class="text-[#868E96] hover:text-[#212529] p-1 -mr-1">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <circle cx="12" cy="5" r="2"></circle>
+            <circle cx="12" cy="12" r="2"></circle>
+            <circle cx="12" cy="19" r="2"></circle>
+          </svg>
+        </button>
+      </div>
+
+      <!-- 2. 저녁 운동 30분 / #건강 / 높음 / 미완료 / 중요(별 표시) / 오늘 19:00 마감 -->
+      <div class="bg-[#FFFFFF] border border-[#E9ECEF] rounded-[14px] p-4 shadow-card hover:border-[#1EA65C] transition-all flex items-start gap-3 relative group">
+        <!-- Unchecked Checkbox -->
+        <button type="button" aria-label="완료 처리" class="w-5 h-5 mt-0.5 rounded-full border-2 border-[#868E96] flex items-center justify-center hover:border-[#1EA65C] transition-colors shrink-0">
+        </button>
+        
+        <div class="flex-1 min-w-0">
+          <!-- Badges line -->
+          <div class="flex items-center gap-1.5 mb-1.5 flex-wrap">
+            <!-- PriorityBadge: 높음 -->
+            <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-semibold bg-[#FA5252]/10 text-[#FA5252]">
+              높음
+            </span>
+            <!-- Tag Badge: #건강 -->
+            <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-medium bg-[#F8F9FA] border border-[#E9ECEF] text-[#495057]">
+              #건강
+            </span>
+            <!-- Star Important Badge -->
+            <svg class="w-3.5 h-3.5 fill-[#FAB005] text-[#FAB005] shrink-0" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+          </div>
+
+          <!-- Task Title -->
+          <h2 class="text-[14px] font-semibold text-[#212529] tracking-tight truncate">
+            저녁 운동 30분
+          </h2>
+
+          <!-- Due Date -->
+          <div class="flex items-center gap-1.5 mt-2 text-[12px] font-medium text-[#495057]">
+            <svg class="w-3.5 h-3.5 stroke-[#868E96]" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <span>오늘 19:00 마감</span>
+          </div>
+        </div>
+
+        <button type="button" aria-label="메뉴 더보기" class="text-[#868E96] hover:text-[#212529] p-1 -mr-1">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <circle cx="12" cy="5" r="2"></circle>
+            <circle cx="12" cy="12" r="2"></circle>
+            <circle cx="12" cy="19" r="2"></circle>
+          </svg>
+        </button>
+      </div>
+
+      <!-- 3. 영어 단어 20개 외우기 / #공부 / 중간 / 미완료 / 내일 마감 -->
+      <div class="bg-[#FFFFFF] border border-[#E9ECEF] rounded-[14px] p-4 shadow-card hover:border-[#1EA65C] transition-all flex items-start gap-3 relative group">
+        <!-- Unchecked Checkbox -->
+        <button type="button" aria-label="완료 처리" class="w-5 h-5 mt-0.5 rounded-full border-2 border-[#868E96] flex items-center justify-center hover:border-[#1EA65C] transition-colors shrink-0">
+        </button>
+        
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-1.5 mb-1.5">
+            <!-- PriorityBadge: 중간 -->
+            <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-medium bg-[#F8F9FA] border border-[#E9ECEF] text-[#495057]">
+              중간
+            </span>
+            <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-medium bg-[#F8F9FA] border border-[#E9ECEF] text-[#495057]">
+              #공부
+            </span>
+          </div>
+
+          <h2 class="text-[14px] font-semibold text-[#212529] tracking-tight truncate">
+            영어 단어 20개 외우기
+          </h2>
+
+          <div class="flex items-center gap-1.5 mt-2 text-[12px] font-medium text-[#495057]">
+            <svg class="w-3.5 h-3.5 stroke-[#868E96]" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <span>내일 마감</span>
+          </div>
+        </div>
+
+        <button type="button" aria-label="메뉴 더보기" class="text-[#868E96] hover:text-[#212529] p-1 -mr-1">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <circle cx="12" cy="5" r="2"></circle>
+            <circle cx="12" cy="12" r="2"></circle>
+            <circle cx="12" cy="19" r="2"></circle>
+          </svg>
+        </button>
+      </div>
+
+      <!-- 4. 책 30쪽 읽기 / #공부 / 낮음 / 미완료 / 금요일 마감 -->
+      <div class="bg-[#FFFFFF] border border-[#E9ECEF] rounded-[14px] p-4 shadow-card hover:border-[#1EA65C] transition-all flex items-start gap-3 relative group">
+        <!-- Unchecked Checkbox -->
+        <button type="button" aria-label="완료 처리" class="w-5 h-5 mt-0.5 rounded-full border-2 border-[#868E96] flex items-center justify-center hover:border-[#1EA65C] transition-colors shrink-0">
+        </button>
+        
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-1.5 mb-1.5">
+            <!-- PriorityBadge: 낮음 -->
+            <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-medium bg-[#E8F7EE] text-[#1EA65C]">
+              낮음
+            </span>
+            <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-medium bg-[#F8F9FA] border border-[#E9ECEF] text-[#495057]">
+              #공부
+            </span>
+          </div>
+
+          <h2 class="text-[14px] font-semibold text-[#212529] tracking-tight truncate">
+            책 30쪽 읽기
+          </h2>
+
+          <div class="flex items-center gap-1.5 mt-2 text-[12px] font-medium text-[#495057]">
+            <svg class="w-3.5 h-3.5 stroke-[#868E96]" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <span>금요일 마감</span>
+          </div>
+        </div>
+
+        <button type="button" aria-label="메뉴 더보기" class="text-[#868E96] hover:text-[#212529] p-1 -mr-1">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <circle cx="12" cy="5" r="2"></circle>
+            <circle cx="12" cy="12" r="2"></circle>
+            <circle cx="12" cy="19" r="2"></circle>
+          </svg>
+        </button>
+      </div>
+
+      <!-- 5. 장보기 / #생활 / 중간 / 완료 -->
+      <div class="bg-[#FFFFFF]/75 border border-[#E9ECEF] rounded-[14px] p-4 shadow-card flex items-start gap-3 relative group">
+        <!-- Checked Checkbox -->
+        <button type="button" aria-label="미완료로 변경" class="w-5 h-5 mt-0.5 rounded-full bg-[#1EA65C] text-white flex items-center justify-center shrink-0">
+          <svg class="w-3.5 h-3.5 stroke-white" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </button>
+        
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-1.5 mb-1.5 opacity-60">
+            <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-medium bg-[#F8F9FA] border border-[#E9ECEF] text-[#495057]">
+              중간
+            </span>
+            <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-medium bg-[#F8F9FA] border border-[#E9ECEF] text-[#495057]">
+              #생활
+            </span>
+          </div>
+
+          <!-- Title with line-through and muted text -->
+          <h2 class="text-[14px] font-medium text-[#868E96] line-through tracking-tight truncate">
+            장보기
+          </h2>
+
+          <div class="flex items-center gap-1.5 mt-2 text-[12px] font-medium text-[#868E96]">
+            <svg class="w-3.5 h-3.5 stroke-[#868E96]" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <span>완료됨</span>
+          </div>
+        </div>
+
+        <button type="button" aria-label="메뉴 더보기" class="text-[#868E96] hover:text-[#212529] p-1 -mr-1">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <circle cx="12" cy="5" r="2"></circle>
+            <circle cx="12" cy="12" r="2"></circle>
+            <circle cx="12" cy="19" r="2"></circle>
+          </svg>
+        </button>
+      </div>
+
+      <!-- 6. 병원 예약하기 / #건강 / 낮음 / 완료 -->
+      <div class="bg-[#FFFFFF]/75 border border-[#E9ECEF] rounded-[14px] p-4 shadow-card flex items-start gap-3 relative group">
+        <!-- Checked Checkbox -->
+        <button type="button" aria-label="미완료로 변경" class="w-5 h-5 mt-0.5 rounded-full bg-[#1EA65C] text-white flex items-center justify-center shrink-0">
+          <svg class="w-3.5 h-3.5 stroke-white" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </button>
+        
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-1.5 mb-1.5 opacity-60">
+            <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-medium bg-[#E8F7EE] text-[#1EA65C]">
+              낮음
+            </span>
+            <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-medium bg-[#F8F9FA] border border-[#E9ECEF] text-[#495057]">
+              #건강
+            </span>
+          </div>
+
+          <h2 class="text-[14px] font-medium text-[#868E96] line-through tracking-tight truncate">
+            병원 예약하기
+          </h2>
+
+          <div class="flex items-center gap-1.5 mt-2 text-[12px] font-medium text-[#868E96]">
+            <svg class="w-3.5 h-3.5 stroke-[#868E96]" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <span>완료됨 (어제)</span>
+          </div>
+        </div>
+
+        <button type="button" aria-label="메뉴 더보기" class="text-[#868E96] hover:text-[#212529] p-1 -mr-1">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <circle cx="12" cy="5" r="2"></circle>
+            <circle cx="12" cy="12" r="2"></circle>
+            <circle cx="12" cy="19" r="2"></circle>
+          </svg>
+        </button>
+      </div>
+
+      <!-- 7. 방 청소하기 / #생활 / 낮음 / 완료 -->
+      <div class="bg-[#FFFFFF]/75 border border-[#E9ECEF] rounded-[14px] p-4 shadow-card flex items-start gap-3 relative group">
+        <!-- Checked Checkbox -->
+        <button type="button" aria-label="미완료로 변경" class="w-5 h-5 mt-0.5 rounded-full bg-[#1EA65C] text-white flex items-center justify-center shrink-0">
+          <svg class="w-3.5 h-3.5 stroke-white" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </button>
+        
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-1.5 mb-1.5 opacity-60">
+            <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-medium bg-[#E8F7EE] text-[#1EA65C]">
+              낮음
+            </span>
+            <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-medium bg-[#F8F9FA] border border-[#E9ECEF] text-[#495057]">
+              #생활
+            </span>
+          </div>
+
+          <h2 class="text-[14px] font-medium text-[#868E96] line-through tracking-tight truncate">
+            방 청소하기
+          </h2>
+
+          <div class="flex items-center gap-1.5 mt-2 text-[12px] font-medium text-[#868E96]">
+            <svg class="w-3.5 h-3.5 stroke-[#868E96]" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <span>완료됨</span>
+          </div>
+        </div>
+
+        <button type="button" aria-label="메뉴 더보기" class="text-[#868E96] hover:text-[#212529] p-1 -mr-1">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <circle cx="12" cy="5" r="2"></circle>
+            <circle cx="12" cy="12" r="2"></circle>
+            <circle cx="12" cy="19" r="2"></circle>
+          </svg>
+        </button>
+      </div>
+
+      <!-- 8. 물 2L 마시기 / #건강 / 낮음 / 완료 -->
+      <div class="bg-[#FFFFFF]/75 border border-[#E9ECEF] rounded-[14px] p-4 shadow-card flex items-start gap-3 relative group">
+        <!-- Checked Checkbox -->
+        <button type="button" aria-label="미완료로 변경" class="w-5 h-5 mt-0.5 rounded-full bg-[#1EA65C] text-white flex items-center justify-center shrink-0">
+          <svg class="w-3.5 h-3.5 stroke-white" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </button>
+        
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-1.5 mb-1.5 opacity-60">
+            <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-medium bg-[#E8F7EE] text-[#1EA65C]">
+              낮음
+            </span>
+            <span class="inline-flex items-center px-1.5 py-0.5 rounded text-[11px] font-medium bg-[#F8F9FA] border border-[#E9ECEF] text-[#495057]">
+              #건강
+            </span>
+          </div>
+
+          <h2 class="text-[14px] font-medium text-[#868E96] line-through tracking-tight truncate">
+            물 2L 마시기
+          </h2>
+
+          <div class="flex items-center gap-1.5 mt-2 text-[12px] font-medium text-[#868E96]">
+            <svg class="w-3.5 h-3.5 stroke-[#868E96]" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <span>완료됨 (오늘)</span>
+          </div>
+        </div>
+
+        <button type="button" aria-label="메뉴 더보기" class="text-[#868E96] hover:text-[#212529] p-1 -mr-1">
+          <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+            <circle cx="12" cy="5" r="2"></circle>
+            <circle cx="12" cy="12" r="2"></circle>
+            <circle cx="12" cy="19" r="2"></circle>
+          </svg>
+        </button>
+      </div>
+
+    </main>
+
+    <!-- 4. Floating Action Button (FAB +) -->
+    <div class="absolute right-5 bottom-8 z-30">
+      <button type="button" aria-label="새 태스크 추가" class="w-14 h-14 rounded-full bg-[#1EA65C] text-white flex items-center justify-center shadow-fab hover:bg-[#178449] active:scale-95 transition-all">
+        <svg class="w-6 h-6 stroke-white" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- iPhone 16 Home Indicator Bar -->
+    <div class="w-full pb-2 pt-1 flex justify-center bg-[#F8F9FA] select-none">
+      <div class="w-32 h-1 bg-[#212529]/30 rounded-full"></div>
+    </div>
+
+  </div>
+
+
+
+
+
+</body></html>
+
+<!-- Tasko 모바일 투두 대시보드 & 바텀시트 (Interactive Screen) -->
+<!DOCTYPE html><html lang="ko"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Tasko - 모바일 투두 대시보드 &amp; 바텀시트</title>
+  <!-- Pretendard CDN -->
+  <link rel="stylesheet" as="style" crossorigin="" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              DEFAULT: '#1EA65C',
+              hover: '#178449',
+              light: '#E8F7EE'
+            },
+            background: '#F8F9FA',
+            surface: {
+              DEFAULT: '#FFFFFF',
+              card: '#FFFFFF'
+            },
+            border: '#E9ECEF',
+            text: {
+              primary: '#212529',
+              secondary: '#495057',
+              muted: '#868E96'
+            },
+            destructive: '#FA5252'
+          },
+          fontFamily: {
+            sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'sans-serif']
+          },
+          boxShadow: {
+            'fab': '0 8px 24px -4px rgba(30, 166, 92, 0.35)',
+            'card': '0 2px 8px 0 rgba(0, 0, 0, 0.04)',
+            'sheet': '0 -8px 30px rgba(0, 0, 0, 0.12)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Pretendard 폰트 최우선 적용 */
+    body, * {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+    /* 가로 스크롤바 숨김 */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    /* 바텀시트 트랜지션 */
+    #bottomSheetContainer {
+      transition: visibility 0.25s ease;
+    }
+    #bottomSheetBackdrop {
+      transition: opacity 0.25s ease;
+    }
+    #bottomSheetPanel {
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    /* 체크 완료 텍스트 페이드 & 취소선 애니메이션 */
+    .task-title {
+      transition: color 0.2s ease, text-decoration 0.2s ease;
+    }
+    .task-check-icon {
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease;
+    }
+  </style>
+</head>
+<body class="bg-[#212529] min-h-screen flex items-center justify-center p-0 md:p-6 select-none">
+
+  <!-- iPhone 16 디바이스 프레임 (393 x 852px 뷰포트 규격) -->
+  <div class="relative w-full max-w-[393px] h-[852px] bg-background overflow-hidden flex flex-col md:rounded-[44px] md:shadow-2xl md:ring-1 md:ring-white/10" id="appRoot">
+
+    <!-- [Figma Handoff] 1. 상단 Safe Area & 헤더 섹션 (pt-12, px-5, h-14) -->
+    <header class="pt-11 px-5 pb-3 bg-surface border-b border-border flex items-center justify-between shrink-0 z-10">
+      <div class="flex items-center gap-2">
+        <div class="w-7 h-7 rounded-lg bg-primary flex items-center justify-center text-white shadow-sm">
+          <!-- Checkmark Icon -->
+          <svg class="w-4 h-4 stroke-[2.5]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <h1 class="text-xl font-bold text-text-primary tracking-tight">오늘의 할 일</h1>
+      </div>
+      
+      <!-- 우측 액션: 검색 아이콘 및 프로필 아바타 -->
+      <div class="flex items-center gap-3">
+        <!-- 검색 버튼 (24x24 SVG 아이콘, 48px 터치 영역 대응) -->
+        <button type="button" aria-label="할 일 검색" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-background text-text-secondary active:scale-95 transition-all">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+        <!-- 프로필 아바타 -->
+        <div class="w-8 h-8 rounded-full bg-primary-light border border-primary/20 flex items-center justify-center text-xs font-bold text-primary">
+          TK
+        </div>
+      </div>
+    </header>
+
+    <!-- [Figma Handoff] 2. 상단 요약 & 필터 섹션 (Progress Card & FilterChips) -->
+    <div class="shrink-0 bg-surface px-5 pt-3 pb-3 border-b border-border shadow-sm">
+      <!-- 2-1. 완료율 프로그레스 카드 -->
+      <div class="bg-primary-light rounded-2xl p-4 border border-primary/20 mb-3">
+        <div class="flex items-center justify-between mb-2">
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-semibold text-primary px-2 py-0.5 bg-white rounded-full shadow-xs">목표 달성률</span>
+            <span class="text-xs text-text-secondary" id="progressStatsText">5개 중 3개 완료</span>
+          </div>
+          <span class="text-sm font-bold text-primary" id="progressPercentageText">60%</span>
+        </div>
+        <!-- 게이지 바 (에메랄드 그린 #1EA65C) -->
+        <div class="w-full h-2.5 bg-white/80 rounded-full overflow-hidden p-0.5">
+          <div id="progressBar" class="h-full bg-primary rounded-full transition-all duration-300 ease-out" style="width: 60%;"></div>
+        </div>
+      </div><div class="bg-surface rounded-xl p-3.5 border border-border shadow-sm mb-3"><div class="flex items-center justify-between mb-2.5"><span class="text-xs font-semibold text-text-secondary">카테고리별 진행도</span><span class="text-[11px] text-text-muted">총 3개 분야</span></div><div class="space-y-2.5"><div><div class="flex items-center justify-between mb-1"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-background text-text-secondary border border-border">#생활</span><span class="text-xs font-semibold text-text-primary">2/2 <span class="text-[11px] font-medium text-primary">(100%)</span></span></div><div class="w-full h-1.5 bg-border rounded-full overflow-hidden"><div class="h-full bg-primary rounded-full" style="width: 100%;"></div></div></div><div><div class="flex items-center justify-between mb-1"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-background text-text-secondary border border-border">#건강</span><span class="text-xs font-semibold text-text-primary">1/2 <span class="text-[11px] font-medium text-text-muted">(50%)</span></span></div><div class="w-full h-1.5 bg-border rounded-full overflow-hidden"><div class="h-full bg-primary rounded-full" style="width: 50%;"></div></div></div><div><div class="flex items-center justify-between mb-1"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-background text-text-secondary border border-border">#공부</span><span class="text-xs font-semibold text-text-muted">0/1 <span class="text-[11px] font-medium text-text-muted">(0%)</span></span></div><div class="w-full h-1.5 bg-border rounded-full overflow-hidden"><div class="h-full bg-primary rounded-full" style="width: 0%;"></div></div></div></div></div>
+
+      <!-- 2-2. 가로 스크롤 필터 칩 바 (FilterChip 컴포넌트 재사용) -->
+      <!-- [전체 5] [진행 중 2] [완료 3] [중요 1] -->
+      <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-0.5" id="filterContainer">
+        <!-- Chip 1: 전체 -->
+        <button type="button" onclick="setFilter('ALL')" id="filter-ALL" class="filter-chip shrink-0 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all active:scale-95 bg-primary text-white shadow-xs">
+          <span>전체</span>
+          <span class="filter-badge px-1.5 py-0.2 rounded-full text-[11px] font-bold bg-white/20 text-white" id="countBadge-ALL">5</span>
+        </button>
+        <!-- Chip 2: 진행 중 -->
+        <button type="button" onclick="setFilter('IN_PROGRESS')" id="filter-IN_PROGRESS" class="filter-chip shrink-0 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium transition-all active:scale-95 bg-white border border-border text-text-primary hover:bg-background">
+          <span>진행 중</span>
+          <span class="filter-badge px-1.5 py-0.2 rounded-full text-[11px] font-medium bg-background text-text-secondary" id="countBadge-IN_PROGRESS">2</span>
+        </button>
+        <!-- Chip 3: 완료 -->
+        <button type="button" onclick="setFilter('COMPLETED')" id="filter-COMPLETED" class="filter-chip shrink-0 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium transition-all active:scale-95 bg-white border border-border text-text-primary hover:bg-background">
+          <span>완료</span>
+          <span class="filter-badge px-1.5 py-0.2 rounded-full text-[11px] font-medium bg-background text-text-secondary" id="countBadge-COMPLETED">3</span>
+        </button>
+        <!-- Chip 4: 중요 -->
+        <button type="button" onclick="setFilter('STARRED')" id="filter-STARRED" class="filter-chip shrink-0 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium transition-all active:scale-95 bg-white border border-border text-text-primary hover:bg-background">
+          <svg class="w-3.5 h-3.5 text-text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+          <span>중요</span>
+          <span class="filter-badge px-1.5 py-0.2 rounded-full text-[11px] font-medium bg-background text-text-secondary" id="countBadge-STARRED">1</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- [Figma Handoff] 3. 중앙 메인 스크롤 영역 (flex-1, overflow-y-auto, p-4, space-y-3) -->
+    <!-- TaskCard 세로 오토레이아웃 리스트 -->
+    <main class="flex-1 overflow-y-auto px-4 py-4 space-y-3 pb-24" id="taskListContainer"><!-- TaskCard Item ID: 1 (Completed) -->
+<article class="relative flex items-center gap-3 p-3.5 bg-surface rounded-2xl border border-border/60 bg-surface/80 shadow-card transition-all duration-200">
+  <button type="button" onclick="toggleTask(1)" aria-label="미완료로 변경" class="w-9 h-9 shrink-0 rounded-full flex items-center justify-center transition-all bg-primary text-white">
+    <svg class="w-4 h-4 stroke-[2.5] task-check-icon scale-100 opacity-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="20 6 9 17 4 12"></polyline>
+    </svg>
+  </button>
+  <div class="flex-1 min-w-0" onclick="toggleTask(1)">
+    <div class="flex items-center gap-1.5 mb-1">
+      <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-medium bg-background text-text-secondary border border-border">
+        <span class="w-1.5 h-1.5 rounded-full bg-text-secondary"></span>
+        <span>중간</span>
+      </span>
+      <span class="text-[11px] font-medium text-text-muted px-1.5 py-0.2 bg-background rounded">#생활</span>
+    </div>
+    <h3 class="task-title text-sm font-semibold tracking-tight truncate line-through text-text-muted">장보기</h3>
+    <div class="flex items-center gap-1 mt-1 text-[11px] text-text-muted">
+      <svg class="w-3 h-3 text-text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+        <line x1="16" y1="2" x2="16" y2="6"></line>
+        <line x1="8" y1="2" x2="8" y2="6"></line>
+        <line x1="3" y1="10" x2="21" y2="10"></line>
+      </svg>
+      <span>완료됨</span>
+    </div>
+  </div>
+  <button type="button" aria-label="추가 옵션" class="w-8 h-8 shrink-0 flex items-center justify-center rounded-lg text-text-muted hover:text-text-primary hover:bg-background transition-colors">
+    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="1"></circle>
+      <circle cx="12" cy="5" r="1"></circle>
+      <circle cx="12" cy="19" r="1"></circle>
+    </svg>
+  </button>
+</article>
+
+<!-- TaskCard Item ID: 2 (In progress / Starred) -->
+<article class="relative flex items-center gap-3 p-3.5 bg-surface rounded-2xl border border-border hover:border-primary/40 shadow-card transition-all duration-200">
+  <button type="button" onclick="toggleTask(2)" aria-label="완료 처리" class="w-9 h-9 shrink-0 rounded-full flex items-center justify-center transition-all border-2 border-text-muted/50 hover:border-primary">
+    <div class="w-2 h-2 rounded-full bg-transparent"></div>
+  </button>
+  <div class="flex-1 min-w-0" onclick="toggleTask(2)">
+    <div class="flex items-center gap-1.5 mb-1">
+      <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-semibold bg-[#FA5252]/10 text-destructive border border-[#FA5252]/20">
+        <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
+          <line x1="4" y1="22" x2="4" y2="15"></line>
+        </svg>
+        <span>높음</span>
+      </span>
+      <span class="text-[11px] font-medium text-text-muted px-1.5 py-0.2 bg-background rounded">#건강</span>
+      <svg class="w-3 h-3 text-amber-500 fill-amber-500" viewBox="0 0 24 24" stroke="currentColor">
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+      </svg>
+    </div>
+    <h3 class="task-title text-sm font-semibold tracking-tight truncate text-text-primary">저녁 운동 30분</h3>
+    <div class="flex items-center gap-1 mt-1 text-[11px] text-text-secondary">
+      <svg class="w-3 h-3 text-text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+        <line x1="16" y1="2" x2="16" y2="6"></line>
+        <line x1="8" y1="2" x2="8" y2="6"></line>
+        <line x1="3" y1="10" x2="21" y2="10"></line>
+      </svg>
+      <span>오늘 19:00 마감</span>
+    </div>
+  </div>
+  <button type="button" aria-label="추가 옵션" class="w-8 h-8 shrink-0 flex items-center justify-center rounded-lg text-text-muted hover:text-text-primary hover:bg-background transition-colors">
+    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="1"></circle>
+      <circle cx="12" cy="5" r="1"></circle>
+      <circle cx="12" cy="19" r="1"></circle>
+    </svg>
+  </button>
+</article>
+
+<!-- TaskCard Item ID: 3 (In progress) -->
+<article class="relative flex items-center gap-3 p-3.5 bg-surface rounded-2xl border border-border hover:border-primary/40 shadow-card transition-all duration-200">
+  <button type="button" onclick="toggleTask(3)" aria-label="완료 처리" class="w-9 h-9 shrink-0 rounded-full flex items-center justify-center transition-all border-2 border-text-muted/50 hover:border-primary">
+    <div class="w-2 h-2 rounded-full bg-transparent"></div>
+  </button>
+  <div class="flex-1 min-w-0" onclick="toggleTask(3)">
+    <div class="flex items-center gap-1.5 mb-1">
+      <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-medium bg-background text-text-secondary border border-border">
+        <span class="w-1.5 h-1.5 rounded-full bg-text-secondary"></span>
+        <span>중간</span>
+      </span>
+      <span class="text-[11px] font-medium text-text-muted px-1.5 py-0.2 bg-background rounded">#공부</span>
+    </div>
+    <h3 class="task-title text-sm font-semibold tracking-tight truncate text-text-primary">영어 단어 20개 외우기</h3>
+    <div class="flex items-center gap-1 mt-1 text-[11px] text-text-secondary">
+      <svg class="w-3 h-3 text-text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+        <line x1="16" y1="2" x2="16" y2="6"></line>
+        <line x1="8" y1="2" x2="8" y2="6"></line>
+        <line x1="3" y1="10" x2="21" y2="10"></line>
+      </svg>
+      <span>내일 마감</span>
+    </div>
+  </div>
+  <button type="button" aria-label="추가 옵션" class="w-8 h-8 shrink-0 flex items-center justify-center rounded-lg text-text-muted hover:text-text-primary hover:bg-background transition-colors">
+    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="1"></circle>
+      <circle cx="12" cy="5" r="1"></circle>
+      <circle cx="12" cy="19" r="1"></circle>
+    </svg>
+  </button>
+</article>
+
+<!-- TaskCard Item ID: 4 (Completed) -->
+<article class="relative flex items-center gap-3 p-3.5 bg-surface rounded-2xl border border-border/60 bg-surface/80 shadow-card transition-all duration-200">
+  <button type="button" onclick="toggleTask(4)" aria-label="미완료로 변경" class="w-9 h-9 shrink-0 rounded-full flex items-center justify-center transition-all bg-primary text-white">
+    <svg class="w-4 h-4 stroke-[2.5] task-check-icon scale-100 opacity-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="20 6 9 17 4 12"></polyline>
+    </svg>
+  </button>
+  <div class="flex-1 min-w-0" onclick="toggleTask(4)">
+    <div class="flex items-center gap-1.5 mb-1">
+      <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-medium bg-primary-light text-primary border border-primary/20">
+        <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+        <span>낮음</span>
+      </span>
+      <span class="text-[11px] font-medium text-text-muted px-1.5 py-0.2 bg-background rounded">#건강</span>
+    </div>
+    <h3 class="task-title text-sm font-semibold tracking-tight truncate line-through text-text-muted">병원 예약하기</h3>
+    <div class="flex items-center gap-1 mt-1 text-[11px] text-text-muted">
+      <svg class="w-3 h-3 text-text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+        <line x1="16" y1="2" x2="16" y2="6"></line>
+        <line x1="8" y1="2" x2="8" y2="6"></line>
+        <line x1="3" y1="10" x2="21" y2="10"></line>
+      </svg>
+      <span>완료됨 (어제)</span>
+    </div>
+  </div>
+  <button type="button" aria-label="추가 옵션" class="w-8 h-8 shrink-0 flex items-center justify-center rounded-lg text-text-muted hover:text-text-primary hover:bg-background transition-colors">
+    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="1"></circle>
+      <circle cx="12" cy="5" r="1"></circle>
+      <circle cx="12" cy="19" r="1"></circle>
+    </svg>
+  </button>
+</article>
+
+<!-- TaskCard Item ID: 5 (Completed) -->
+<article class="relative flex items-center gap-3 p-3.5 bg-surface rounded-2xl border border-border/60 bg-surface/80 shadow-card transition-all duration-200">
+  <button type="button" onclick="toggleTask(5)" aria-label="미완료로 변경" class="w-9 h-9 shrink-0 rounded-full flex items-center justify-center transition-all bg-primary text-white">
+    <svg class="w-4 h-4 stroke-[2.5] task-check-icon scale-100 opacity-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="20 6 9 17 4 12"></polyline>
+    </svg>
+  </button>
+  <div class="flex-1 min-w-0" onclick="toggleTask(5)">
+    <div class="flex items-center gap-1.5 mb-1">
+      <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-medium bg-primary-light text-primary border border-primary/20">
+        <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+        <span>낮음</span>
+      </span>
+      <span class="text-[11px] font-medium text-text-muted px-1.5 py-0.2 bg-background rounded">#생활</span>
+    </div>
+    <h3 class="task-title text-sm font-semibold tracking-tight truncate line-through text-text-muted">방 청소하기</h3>
+    <div class="flex items-center gap-1 mt-1 text-[11px] text-text-muted">
+      <svg class="w-3 h-3 text-text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+        <line x1="16" y1="2" x2="16" y2="6"></line>
+        <line x1="8" y1="2" x2="8" y2="6"></line>
+        <line x1="3" y1="10" x2="21" y2="10"></line>
+      </svg>
+      <span>완료됨</span>
+    </div>
+  </div>
+  <button type="button" aria-label="추가 옵션" class="w-8 h-8 shrink-0 flex items-center justify-center rounded-lg text-text-muted hover:text-text-primary hover:bg-background transition-colors">
+    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="1"></circle>
+      <circle cx="12" cy="5" r="1"></circle>
+      <circle cx="12" cy="19" r="1"></circle>
+    </svg>
+  </button>
+</article></main>
+
+    <!-- [Figma Handoff] 4. 최하단 고정 영역: 우측 하단 에메랄드 그린 FAB 버튼 (Safe Area pb-8 대응) -->
+    <div class="absolute bottom-6 right-5 z-20">
+      <!-- FAB (Floating Action Button): 56x56px 에메랄드 그린 원형 (#1EA65C), shadow-fab, active:scale-95 -->
+      <button type="button" onclick="openBottomSheet()" aria-label="새로운 태스크 추가" class="w-14 h-14 rounded-full bg-primary hover:bg-primary-hover active:scale-95 text-white flex items-center justify-center shadow-fab transition-all duration-200">
+        <!-- SVG Plus 아이콘 (24x24 규격) -->
+        <svg class="w-6 h-6 stroke-[2.5]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="5" x2="12" y2="19"></line>
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- [Figma Handoff] [2-2] 태스크 등록 바텀시트 (Bottom Sheet Modal & Backdrop) -->
+    <div id="bottomSheetContainer" class="absolute inset-0 z-30 flex flex-col justify-end invisible">
+      <!-- 반투명 딤드 배경 (터치 시 닫힘) -->
+      <div id="bottomSheetBackdrop" onclick="closeBottomSheet()" class="absolute inset-0 bg-black/40 backdrop-blur-[2px] opacity-0"></div>
+
+      <!-- 시트 패널 (translate-y-full -> translate-y-0 슬라이드 업) -->
+      <div id="bottomSheetPanel" class="relative z-10 bg-surface rounded-t-[28px] p-5 pb-8 shadow-sheet flex flex-col border-t border-border translate-y-full">
+        
+        <!-- 상단 드래그 핸들 바 (Drag Handle Bar) -->
+        <div class="w-12 h-1.5 bg-border rounded-full mx-auto mb-4 cursor-pointer" onclick="closeBottomSheet()"></div>
+
+        <!-- 시트 헤더 -->
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="text-lg font-bold text-text-primary tracking-tight">새로운 할 일 등록</h2>
+          <button type="button" onclick="closeBottomSheet()" class="w-8 h-8 rounded-full hover:bg-background text-text-muted flex items-center justify-center">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+
+        <!-- 바텀시트 입력 폼 본문 -->
+        <form id="newTaskForm" onsubmit="handleCreateTask(event)" class="space-y-4">
+          <!-- 1. 태스크 제목 인풋 -->
+          <div>
+            <label for="taskTitleInput" class="block text-xs font-semibold text-text-secondary mb-1.5">할 일 제목</label>
+            <input type="text" id="taskTitleInput" required="" placeholder="무엇을 완료해야 하나요?" class="w-full px-3.5 py-2.5 rounded-xl bg-background border border-border text-sm text-text-primary placeholder:text-text-muted focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all">
+          </div>
+
+          <!-- 2. 우선순위 선택 (우선순위 뱃지 토큰 재사용) -->
+          <div>
+            <label class="block text-xs font-semibold text-text-secondary mb-1.5">우선순위</label>
+            <div class="grid grid-cols-3 gap-2">
+              <label class="cursor-pointer">
+                <input type="radio" name="priorityOption" value="high" class="peer sr-only">
+                <div class="flex items-center justify-center gap-1.5 py-2 rounded-xl border border-border peer-checked:border-destructive peer-checked:bg-[#FA5252]/10 peer-checked:text-destructive text-text-secondary text-xs font-medium transition-all">
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
+                    <line x1="4" y1="22" x2="4" y2="15"></line>
+                  </svg>
+                  <span>높음</span>
+                </div>
+              </label>
+
+              <label class="cursor-pointer">
+                <input type="radio" name="priorityOption" value="medium" checked="" class="peer sr-only">
+                <div class="flex items-center justify-center gap-1.5 py-2 rounded-xl border border-border peer-checked:border-text-secondary peer-checked:bg-background peer-checked:text-text-primary text-text-secondary text-xs font-medium transition-all">
+                  <span class="w-2 h-2 rounded-full bg-text-secondary"></span>
+                  <span>중간</span>
+                </div>
+              </label>
+
+              <label class="cursor-pointer">
+                <input type="radio" name="priorityOption" value="low" class="peer sr-only">
+                <div class="flex items-center justify-center gap-1.5 py-2 rounded-xl border border-border peer-checked:border-primary peer-checked:bg-primary-light peer-checked:text-primary text-text-secondary text-xs font-medium transition-all">
+                  <span class="w-2 h-2 rounded-full bg-primary"></span>
+                  <span>낮음</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- 3. 태그 카테고리 & 마감일 -->
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label for="taskTagSelect" class="block text-xs font-semibold text-text-secondary mb-1.5">카테고리 태그</label>
+              <select id="taskTagSelect" class="w-full px-3 py-2 rounded-xl bg-background border border-border text-xs text-text-primary focus:outline-none focus:border-primary"><option value="#생활" selected="">#생활</option>
+<option value="#건강">#건강</option>
+<option value="#공부">#공부</option>
+<option value="#디자인">#디자인</option>
+<option value="#개발">#개발</option>
+<option value="#기획">#기획</option></select>
+            </div>
+
+            <div>
+              <label for="taskDueDateInput" class="block text-xs font-semibold text-text-secondary mb-1.5">마감일</label>
+              <div class="relative">
+                <input type="text" id="taskDueDateInput" value="오늘 마감" class="w-full px-3 py-2 rounded-xl bg-background border border-border text-xs text-text-primary focus:outline-none focus:border-primary">
+              </div>
+            </div>
+          </div>
+
+          <!-- 하단: 에메랄드 그린 와이드 '할 일 추가하기' 버튼 -->
+          <div class="pt-2">
+            <button type="submit" class="w-full py-3.5 rounded-xl bg-primary hover:bg-primary-hover active:scale-[0.99] text-white font-semibold text-sm shadow-md transition-all flex items-center justify-center gap-2">
+              <svg class="w-4 h-4 stroke-[2.5]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              <span>할 일 추가하기</span>
+            </button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- JavaScript: 상태 관리 및 실시간 인터랙션 연동 -->
+  <script>
+    // 초기 태스크 목업 데이터 (2단계 컴포넌트 명세 구조 준수)
+    let tasks = [
+      {
+        id: 1,
+        title: '피그마 디자인 시스템 토큰 싱크 맞추기',
+        tag: '#디자인',
+        dueDate: '오늘 18:00 마감',
+        priority: 'high', // 'high' | 'medium' | 'low'
+        completed: false,
+        starred: true
+      },
+      {
+        id: 2,
+        title: 'React 컴포넌트 Props 인터페이스 명세서 검토',
+        tag: '#개발',
+        dueDate: '내일 마감',
+        priority: 'medium',
+        completed: false,
+        starred: false
+      },
+      {
+        id: 3,
+        title: '모바일 13종 SVG UI 아이콘 뷰포트 규격 검증',
+        tag: '#기획',
+        dueDate: '완료됨 (어제)',
+        priority: 'low',
+        completed: true,
+        starred: false
+      },
+      {
+        id: 4,
+        title: 'Tailwind CSS 팔레트 변수 10종 고정 세팅',
+        tag: '#개발',
+        dueDate: '완료됨',
+        priority: 'medium',
+        completed: true,
+        starred: false
+      },
+      {
+        id: 5,
+        title: 'iPhone 16 웹 뷰포트 터치 타겟 최소 48px 확인',
+        tag: '#디자인',
+        dueDate: '완료됨',
+        priority: 'high',
+        completed: true,
+        starred: false
+      }
+    ];
+
+    let currentFilter = 'ALL'; // 'ALL' | 'IN_PROGRESS' | 'COMPLETED' | 'STARRED'
+
+    // 1. 체크 토글 인터랙션 (카드 좌측 체크박스 터치 시 실시간 연동)
+    function toggleTask(id) {
+      const task = tasks.find(t => t.id === id);
+      if (task) {
+        task.completed = !task.completed;
+        renderApp();
+      }
+    }
+
+    // 2. 필터 변경
+    function setFilter(filterType) {
+      currentFilter = filterType;
+      renderApp();
+    }
+
+    // 3. 바텀시트 제어 (열기/닫기)
+    function openBottomSheet() {
+      const container = document.getElementById('bottomSheetContainer');
+      const backdrop = document.getElementById('bottomSheetBackdrop');
+      const panel = document.getElementById('bottomSheetPanel');
+      
+      container.classList.remove('invisible');
+      setTimeout(() => {
+        backdrop.classList.remove('opacity-0');
+        backdrop.classList.add('opacity-100');
+        panel.classList.remove('translate-y-full');
+        panel.classList.add('translate-y-0');
+      }, 10);
+      document.getElementById('taskTitleInput').focus();
+    }
+
+    function closeBottomSheet() {
+      const container = document.getElementById('bottomSheetContainer');
+      const backdrop = document.getElementById('bottomSheetBackdrop');
+      const panel = document.getElementById('bottomSheetPanel');
+
+      backdrop.classList.remove('opacity-100');
+      backdrop.classList.add('opacity-0');
+      panel.classList.remove('translate-y-0');
+      panel.classList.add('translate-y-full');
+
+      setTimeout(() => {
+        container.classList.add('invisible');
+      }, 280);
+    }
+
+    // 4. 새 태스크 생성 핸들러
+    function handleCreateTask(e) {
+      e.preventDefault();
+      const title = document.getElementById('taskTitleInput').value.trim();
+      if (!title) return;
+
+      const priorityChecked = document.querySelector('input[name="priorityOption"]:checked');
+      const priority = priorityChecked ? priorityChecked.value : 'medium';
+      const tag = document.getElementById('taskTagSelect').value;
+      const dueDate = document.getElementById('taskDueDateInput').value.trim() || '오늘';
+
+      const newTask = {
+        id: Date.now(),
+        title: title,
+        tag: tag,
+        dueDate: dueDate,
+        priority: priority,
+        completed: false,
+        starred: false
+      };
+
+      tasks.unshift(newTask);
+      document.getElementById('newTaskForm').reset();
+      document.getElementById('taskDueDateInput').value = '오늘 마감';
+      closeBottomSheet();
+      renderApp();
+    }
+
+    // 우선순위 뱃지 렌더러 (2단계 PriorityBadge 명세 재사용)
+    function renderPriorityBadge(priority) {
+      if (priority === 'high') {
+        return `
+          <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-semibold bg-[#FA5252]/10 text-destructive border border-[#FA5252]/20">
+            <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
+              <line x1="4" y1="22" x2="4" y2="15"></line>
+            </svg>
+            <span>높음</span>
+          </span>
+        `;
+      } else if (priority === 'medium') {
+        return `
+          <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-medium bg-background text-text-secondary border border-border">
+            <span class="w-1.5 h-1.5 rounded-full bg-text-secondary"></span>
+            <span>중간</span>
+          </span>
+        `;
+      } else {
+        return `
+          <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-medium bg-primary-light text-primary border border-primary/20">
+            <span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+            <span>낮음</span>
+          </span>
+        `;
+      }
+    }
+
+    // 메인 UI 렌더링 함수
+    function renderApp() {
+      // 통계 계산
+      const totalCount = tasks.length;
+      const completedCount = tasks.filter(t => t.completed).length;
+      const inProgressCount = totalCount - completedCount;
+      const starredCount = tasks.filter(t => t.starred).length;
+      const percentage = totalCount === 0 ? 0 : Math.round((completedCount / totalCount) * 100);
+
+      // 프로그레스 바 & 카운트 실시간 업데이트
+      document.getElementById('progressPercentageText').textContent = `${percentage}%`;
+      document.getElementById('progressStatsText').textContent = `${totalCount}개 중 ${completedCount}개 완료`;
+      document.getElementById('progressBar').style.width = `${percentage}%`;
+
+      // 칩 뱃지 카운트 업데이트
+      document.getElementById('countBadge-ALL').textContent = totalCount;
+      document.getElementById('countBadge-IN_PROGRESS').textContent = inProgressCount;
+      document.getElementById('countBadge-COMPLETED').textContent = completedCount;
+      document.getElementById('countBadge-STARRED').textContent = starredCount;
+
+      // 필터 칩 스타일링 상태 토글
+      const filterChips = document.querySelectorAll('.filter-chip');
+      filterChips.forEach(chip => {
+        const id = chip.id.replace('filter-', '');
+        const badge = chip.querySelector('.filter-badge');
+        if (id === currentFilter) {
+          chip.className = 'filter-chip shrink-0 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold transition-all active:scale-95 bg-primary text-white shadow-xs';
+          if (badge) {
+            badge.className = 'filter-badge px-1.5 py-0.2 rounded-full text-[11px] font-bold bg-white/20 text-white';
+          }
+        } else {
+          chip.className = 'filter-chip shrink-0 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-medium transition-all active:scale-95 bg-white border border-border text-text-primary hover:bg-background';
+          if (badge) {
+            badge.className = 'filter-badge px-1.5 py-0.2 rounded-full text-[11px] font-medium bg-background text-text-secondary';
+          }
+        }
+      });
+
+      // 태스크 필터링
+      let filteredTasks = tasks;
+      if (currentFilter === 'IN_PROGRESS') {
+        filteredTasks = tasks.filter(t => !t.completed);
+      } else if (currentFilter === 'COMPLETED') {
+        filteredTasks = tasks.filter(t => t.completed);
+      } else if (currentFilter === 'STARRED') {
+        filteredTasks = tasks.filter(t => t.starred);
+      }
+
+      // 태스크 리스트 HTML 빌드 (TaskCard 컴포넌트 규격 그대로 적용)
+      const listContainer = document.getElementById('taskListContainer');
+      if (filteredTasks.length === 0) {
+        listContainer.innerHTML = `
+          <div class="h-48 flex flex-col items-center justify-center text-center p-6 bg-surface rounded-2xl border border-dashed border-border">
+            <div class="w-10 h-10 rounded-full bg-background flex items-center justify-center text-text-muted mb-2">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+            </div>
+            <p class="text-sm font-medium text-text-secondary">해당하는 할 일이 없습니다</p>
+            <p class="text-xs text-text-muted mt-0.5">우측 하단 (+) 버튼을 눌러 새 할 일을 등록해보세요</p>
+          </div>
+        `;
+        return;
+      }
+
+      listContainer.innerHTML = filteredTasks.map(task => {
+        const isDone = task.completed;
+        return `
+          <!-- TaskCard Item ID: ${task.id} (좌측 체크박스 | 중앙 컨텐츠 | 우측 메뉴) -->
+          <article class="relative flex items-center gap-3 p-3.5 bg-surface rounded-2xl border ${isDone ? 'border-border/60 bg-surface/80' : 'border-border hover:border-primary/40'} shadow-card transition-all duration-200">
+            
+            <!-- 좌측 원형 체크박스 (터치 영역 확보 w-10 h-10) -->
+            <button type="button" onclick="toggleTask(${task.id})" aria-label="${isDone ? '미완료로 변경' : '완료 처리'}" class="w-9 h-9 shrink-0 rounded-full flex items-center justify-center transition-all ${isDone ? 'bg-primary text-white' : 'border-2 border-text-muted/50 hover:border-primary'}">
+              ${isDone ? `
+                <svg class="w-4 h-4 stroke-[2.5] task-check-icon scale-100 opacity-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              ` : `
+                <div class="w-2 h-2 rounded-full bg-transparent"></div>
+              `}
+            </button>
+
+            <!-- 중앙 메인 텍스트 및 메타 정보 (세로 오토레이아웃) -->
+            <div class="flex-1 min-w-0" onclick="toggleTask(${task.id})">
+              <!-- 상단: 우선순위 뱃지 및 카테고리 태그 -->
+              <div class="flex items-center gap-1.5 mb-1">
+                ${renderPriorityBadge(task.priority)}
+                <span class="text-[11px] font-medium text-text-muted px-1.5 py-0.2 bg-background rounded">
+                  ${task.tag}
+                </span>
+                ${task.starred ? `
+                  <svg class="w-3 h-3 text-amber-500 fill-amber-500" viewBox="0 0 24 24" stroke="currentColor">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                  </svg>
+                ` : ''}
+              </div>
+
+              <!-- 태스크 타이틀 (완료 시 취소선 및 muted 컬러 처리) -->
+              <h3 class="task-title text-sm font-semibold tracking-tight truncate ${isDone ? 'line-through text-text-muted' : 'text-text-primary'}">
+                ${task.title}
+              </h3>
+
+              <!-- 마감일 라벨 (캘린더 아이콘 + 텍스트) -->
+              <div class="flex items-center gap-1 mt-1 text-[11px] ${isDone ? 'text-text-muted' : 'text-text-secondary'}">
+                <svg class="w-3 h-3 text-text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="16" y1="2" x2="16" y2="6"></line>
+                  <line x1="8" y1="2" x2="8" y2="6"></line>
+                  <line x1="3" y1="10" x2="21" y2="10"></line>
+                </svg>
+                <span>${task.dueDate}</span>
+              </div>
+            </div>
+
+            <!-- 우측 더보기 메뉴 버튼 (3-dots vertical) -->
+            <button type="button" aria-label="추가 옵션" class="w-8 h-8 shrink-0 flex items-center justify-center rounded-lg text-text-muted hover:text-text-primary hover:bg-background transition-colors">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="1"></circle>
+                <circle cx="12" cy="5" r="1"></circle>
+                <circle cx="12" cy="19" r="1"></circle>
+              </svg>
+            </button>
+
+          </article>
+        `;
+      }).join('');
+    }
+
+    // 초기 렌더링 실행
+    renderApp();
+  </script>
+
+
+
+
+
+
+</body></html>
+
+<!-- Tasko 모바일 로그인 화면 (iPhone 16) -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Tasko - 로그인</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Pretendard Font -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'sans-serif'],
+          },
+          colors: {
+            primary: {
+              DEFAULT: '#1EA65C',
+              hover: '#178449',
+              light: '#E8F7EE',
+            },
+            bg: '#F8F9FA',
+            surface: '#FFFFFF',
+            border: '#E9ECEF',
+            text: {
+              primary: '#212529',
+              secondary: '#495057',
+              muted: '#868E96',
+            },
+            destructive: '#FA5252',
+          },
+          boxShadow: {
+            sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
+            md: '0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04)',
+            soft: '0 10px 25px -5px rgba(0, 0, 0, 0.05)',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+      background-color: #F8F9FA;
+      color: #212529;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    input {
+      user-select: text;
+    }
+    input::placeholder {
+      color: #868E96;
+    }
+  </style>
+</head>
+<body class="bg-[#F8F9FA] min-h-screen flex items-center justify-center p-0 md:p-6 antialiased">
+
+  <!-- iPhone 16 Container (393px × 852px) -->
+  <main class="w-full max-w-[393px] h-[852px] bg-[#F8F9FA] flex flex-col justify-between relative overflow-hidden shadow-2xl border border-[#E9ECEF] md:rounded-[48px]">
+
+    <!-- [Figma Handoff: Safe Area Top] -->
+    <header class="w-full pt-12 px-6 flex justify-between items-center z-10">
+      <div class="text-xs font-semibold text-[#868E96] tracking-tight">Tasko Mobile</div>
+      <div class="flex items-center space-x-1.5 text-xs text-[#868E96]">
+        <span class="inline-block w-2 h-2 rounded-full bg-[#1EA65C]"></span>
+        <span>Online</span>
+      </div>
+    </header>
+
+    <!-- [Figma Handoff: Main Content Area] -->
+    <section class="flex-1 px-6 flex flex-col justify-center -mt-6">
+      
+      <!-- 1. 상단: 대시보드 헤더에 쓴 체크 아이콘 + "Tasko" 글자 로고 & 서브 안내 문구 -->
+      <div class="flex flex-col items-center text-center mb-8">
+        <!-- Brand Icon & Wordmark -->
+        <div class="flex items-center space-x-2.5 mb-3">
+          <div class="w-10 h-10 rounded-xl bg-[#1EA65C] flex items-center justify-center shadow-md shadow-[#1EA65C]/20">
+            <svg class="w-5 h-5 text-white stroke-[2.8]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
+            </svg>
+          </div>
+          <span class="text-3xl font-extrabold text-[#212529] tracking-tight">Tasko</span>
+        </div>
+        <!-- 안내 문구 -->
+        <p class="text-sm font-medium text-[#495057]">
+          오늘 할 일을 이어서 관리해 보세요
+        </p>
+      </div>
+
+      <!-- 2. 입력 폼: 바텀시트의 텍스트 인풋과 동일한 구조 (Surface 배경, Border, 둥근 모서리) -->
+      <form class="space-y-4" onsubmit="event.preventDefault();">
+        
+        <!-- 이메일 입력창 -->
+        <div class="space-y-1.5">
+          <label for="email" class="block text-xs font-semibold text-[#495057]">
+            이메일
+          </label>
+          <div class="relative">
+            <input 
+              type="email" 
+              id="email" 
+              placeholder="example@tasko.app"
+              class="w-full h-12 px-4 bg-white border border-[#E9ECEF] rounded-xl text-sm text-[#212529] font-normal placeholder-[#868E96] focus:outline-none focus:border-[#1EA65C] focus:ring-2 focus:ring-[#1EA65C]/15 transition-all"
+            />
+          </div>
+        </div>
+
+        <!-- 비밀번호 입력창 (입력한 글자는 가려서 표시) -->
+        <div class="space-y-1.5">
+          <label for="password" class="block text-xs font-semibold text-[#495057]">
+            비밀번호
+          </label>
+          <div class="relative">
+            <input 
+              type="password" 
+              id="password" 
+              placeholder="비밀번호를 입력하세요"
+              class="w-full h-12 px-4 bg-white border border-[#E9ECEF] rounded-xl text-sm text-[#212529] font-normal placeholder-[#868E96] focus:outline-none focus:border-[#1EA65C] focus:ring-2 focus:ring-[#1EA65C]/15 transition-all"
+            />
+          </div>
+        </div>
+
+        <!-- 3. 버튼: 에메랄드 그린 100% Full-width '로그인' 버튼 (바텀시트의 '추가하기' 버튼과 동일) -->
+        <div class="pt-2">
+          <button 
+            type="submit" 
+            class="w-full h-12 bg-[#1EA65C] hover:bg-[#178449] active:scale-[0.98] text-white text-base font-semibold rounded-xl shadow-md shadow-[#1EA65C]/25 transition-all duration-150 flex items-center justify-center">
+            로그인
+          </button>
+        </div>
+
+      </form>
+
+    </section>
+
+    <!-- 4. 하단 Safe Area & 회원가입 링크 -->
+    <footer class="w-full pb-10 px-6 text-center">
+      <div class="text-sm text-[#495057]">
+        계정이 없으신가요? 
+        <a href="#signup" class="font-bold text-[#1EA65C] hover:underline ml-1 cursor-pointer">회원가입</a>
+      </div>
+      <!-- [Figma Handoff: iOS Home Indicator] -->
+      <div class="w-32 h-1 bg-[#212529]/20 rounded-full mx-auto mt-6"></div>
+    </footer>
+
+  </main>
+
+</body>
+</html>
+
+
+<!-- Tasko 모바일 회원가입 화면 (iPhone 16) -->
+<!DOCTYPE html>
+
+<html lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tasko 모바일 회원가입 화면 (iPhone 16)</title>
+<!-- Tailwind CSS CDN with forms and container queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Pretendard Font CDN -->
+<link as="style" crossorigin="" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script data-purpose="tailwind-config">
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#1EA65C',
+              dark: '#188A4C'
+            },
+            neutral: {
+              bg: '#F8F9FA',
+              surface: '#FFFFFF',
+              border: '#E9ECEF',
+              primary: '#212529',
+              secondary: '#495057',
+              muted: '#868E96'
+            }
+          },
+          fontFamily: {
+            sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'sans-serif']
+          }
+        }
+      }
+    };
+  </script>
+<!-- BEGIN: Custom Style Configuration -->
+<style data-purpose="custom-styling">
+    body {
+      font-family: 'Pretendard', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+  </style>
+<!-- END: Custom Style Configuration -->
+</head>
+<body class="bg-[#F8F9FA] min-h-screen flex items-center justify-center p-4 antialiased text-neutral-primary selection:bg-brand selection:text-white">
+<!-- BEGIN: CanvasWrapper -->
+<!-- Outer viewport wrapper to present the centered iPhone 16 device frame -->
+<div class="w-full flex items-center justify-center py-6">
+<!-- BEGIN: iPhone16Frame -->
+<main class="relative w-[393px] h-[852px] bg-neutral-surface rounded-[52px] border border-[#E9ECEF] shadow-[0_20px_50px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)] overflow-hidden flex flex-col justify-between select-none" data-purpose="device-frame">
+<!-- BEGIN: DeviceHeader -->
+<!-- Top header bar containing app status and connectivity indicator -->
+<header class="pt-8 px-7 flex items-center justify-between z-10">
+<span class="text-[13px] font-medium text-neutral-secondary tracking-tight">Tasko Mobile</span>
+<div class="flex items-center space-x-1.5">
+<span class="w-2 h-2 rounded-full bg-brand inline-block"></span>
+<span class="text-[13px] font-medium text-neutral-secondary">Online</span>
+</div>
+</header>
+<!-- END: DeviceHeader -->
+<!-- BEGIN: MainContent -->
+<!-- Center content: Brand identity, registration input fields, and action button -->
+<section class="px-7 w-full flex flex-col items-center">
+<!-- Brand Logo & Title -->
+<div class="flex flex-col items-center mb-7">
+<div class="flex items-center gap-2.5 mb-2.5">
+<!-- Emerald Green Square with White Checkmark -->
+<div class="w-10 h-10 rounded-xl bg-brand flex items-center justify-center text-white shadow-sm">
+<svg aria-hidden="true" class="w-5 h-5 stroke-[2.5]" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<!-- Brand Title -->
+<h1 class="text-3xl font-extrabold tracking-tight text-neutral-primary">Tasko</h1>
+</div>
+<!-- Subtitle -->
+<p class="text-[14px] text-neutral-secondary font-medium tracking-tight">이메일로 간단하게 시작하세요</p>
+</div>
+<!-- Registration Form -->
+<form class="w-full space-y-4" onsubmit="event.preventDefault();">
+<!-- Field 1: Email -->
+<div class="space-y-1.5">
+<label class="block text-[13px] font-medium text-neutral-secondary pl-0.5" for="email">이메일</label>
+<input class="w-full h-[50px] px-4 rounded-xl border border-neutral-border bg-neutral-surface text-[14.5px] text-neutral-primary placeholder-neutral-muted focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-colors" id="email" placeholder="example@tasko.app" type="email"/>
+</div>
+<!-- Field 2: Password -->
+<div class="space-y-1.5">
+<label class="block text-[13px] font-medium text-neutral-secondary pl-0.5" for="password">비밀번호</label>
+<input class="w-full h-[50px] px-4 rounded-xl border border-neutral-border bg-neutral-surface text-[14.5px] text-neutral-primary placeholder-neutral-muted focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-colors" id="password" placeholder="비밀번호를 입력하세요" type="password"/>
+</div>
+<!-- Field 3: Password Confirmation -->
+<div class="space-y-1.5">
+<label class="block text-[13px] font-medium text-neutral-secondary pl-0.5" for="password-confirm">비밀번호 확인</label>
+<input class="w-full h-[50px] px-4 rounded-xl border border-neutral-border bg-neutral-surface text-[14.5px] text-neutral-primary placeholder-neutral-muted focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand transition-colors" id="password-confirm" placeholder="비밀번호를 한 번 더 입력하세요" type="password"/>
+</div>
+<!-- Primary Action CTA Button -->
+<div class="pt-2">
+<button class="w-full h-[50px] bg-brand hover:bg-brand-dark active:scale-[0.99] text-white font-medium text-[15px] rounded-xl shadow-[0_4px_14px_rgba(30,166,92,0.25)] transition-all flex items-center justify-center cursor-pointer" type="submit">
+              회원가입
+            </button>
+</div>
+</form>
+</section>
+<!-- END: MainContent -->
+<!-- BEGIN: DeviceFooter -->
+<!-- Bottom link to navigate back to login & iOS Home Indicator bar -->
+<footer class="pb-3 flex flex-col items-center gap-6">
+<!-- Switch Screen Link -->
+<p class="text-[13px] text-neutral-secondary font-normal tracking-tight">
+          이미 계정이 있으신가요? 
+          <a class="text-brand font-semibold hover:underline ml-1" href="#">로그인</a>
+</p>
+<!-- iPhone 16 Home Indicator Pill -->
+<div class="w-36 h-[4.5px] bg-[#CFD4D9] rounded-full"></div>
+</footer>
+<!-- END: DeviceFooter -->
+</main>
+<!-- END: iPhone16Frame -->
+</div>
+<!-- END: CanvasWrapper -->
+</body></html>
