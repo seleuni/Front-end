@@ -1,0 +1,8 @@
+{
+  "name": "Remix 시나브로 — SINABRO",
+  "description": "자캐(OC) 세계관·체크포인트·페어링 관계도를 아카이빙하는 창작 스튜디오 웹 애플리케이션",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
