@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const task = {title:"공부하기", isDone: false};
+    const updatedTask{...task, isDone: true};
+    console. log(task, updatedTask);
+
+    const tasks = ["공부하기", "운동하기"];
+    const newTasks= [tasks,"독서하기"];
+    console.log(tasks, newTasks);
+
+    let todoList = [{id:1, title: "리액트 공부하기", isDone:false}];
+    const setTodoList = (next) =>{
+      console.log("같은 배열인가?", next === tpdpList);
+      todoList = next;
+    };
+
+    //아래 볷붙함;;;;;시간존나짧네 그리고 오류 존나남~~~ 이게머임 ㅣㅣ
+    addTask("운동하기");
+    toggleTask(1);
+    console.log(todoList);
+
+    function sum(...numbers) {
+    return numbers.reduce((a, b) => a + b, 0);
+    }
+
+    const arr1 = [1, 2];
+    const arr2 = [3, 4];
+    const combined = [...arr1, ...arr2]; // 전개 구문(지금 배운 것)
+    console.log(sum(1, 2, 3), combined);
+
+    { title: '공부하기', isDone: false } { title: '공부하기', isDone: true }
+    [ '공부하기', '운동하기' ] [ '공부하기', '운동하기', '독서하기' ]
+    같은 배열인가? false
+    같은 배열인가? false
+    [
+  { id: 1, title: '리액트 공부하기', isDone: true },
+    { id: 2, title: '운동하기', isDone: false }
+    ]
+    6 [ 1, 2, 3, 4 ]
+
+  </script>
+</body>
+</html>

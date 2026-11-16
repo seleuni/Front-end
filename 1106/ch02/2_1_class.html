@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class 연습 </title>
+</head>
+<body>
+  <script>
+    class Task{
+      constructor(title, isDone=false){
+        this.title=title;
+        this.isDone=isDone;
+      }
+
+    //   toggleDone(){
+    //     this.isDone=!this.isDone;
+    //   }
+    // }
+
+          toggle(){
+        this.isDone=!this.isDone;
+      }
+    }
+
+      const task1=new Task('JS 공부하기');
+      // const task2=new Task('JS 복습하기',true);
+    
+    console.log(task1);
+    // console.log(task2);
+
+    // task1.toggleDone();
+    
+    task1.toggle();
+
+    class UrgentTask extend Task{
+      constructor(title, isDone=false, priority=1){
+        super(title, isDone);
+        this.priority=priority;
+      }
+    }
+
+      const taks2=new UrgentTask('JS 공부하기',true,3); //이거 뭐 더 써야하는것같은데;;;
+      console.log(task2);
+  </script>
+</body>
+</html>
