@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.card { 
+  position: relative;
+  height:50px;
+  background-color: rgb(28, 31, 48);
+  color: white;
+  font-weight:bold; 
+  
+}
+.badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+
+}
+.open-button {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 20;
+}
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+}
+.modal.open { display: flex; }
+  </style>
+
+</head>
+<body>
+  <div class="card"> 보그쌤 쇼핑</div>
+  <div class="badge">상품</div>
+</body>
+</html>

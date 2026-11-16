@@ -1,0 +1,26 @@
+.card {
+  max-width: 300px;
+  min-width: 300px;
+  height: 300px;
+  padding: 20px;
+  border: 2px solid #333;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  overflow: auto;
+  border-radius: 4px;
+}
+
+.content-box {
+  width: 30%;
+  height: 100px;
+  padding: 20px;
+  border: 2px solid #000;
+  overflow: auto;
+  border-radius: 4px;
+}
+
+.btn {
+  display: inline-block;
+
+}

@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"name": "react_basic",
+			"path": "."
+		},
+		{
+			"name": "practice",
+			"path": "../practice"
+		},
+		{
+			"name": "1106",
+			"path": "../1106"
+		},
+		{
+			"name": "보그쌤의 리액트 소스",
+			"path": "../../Users/suj05/OneDrive/바탕 화면/프론트엔드/보그쌤의 리액트 소스-20261109T051030Z-1-001/보그쌤의 리액트 소스"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "1106"
+	}
+}

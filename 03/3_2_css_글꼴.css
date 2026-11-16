@@ -1,0 +1,18 @@
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+
+.css_2rem {
+  font-size: 2rem
+}
+
+.my1{
+  font-size:1em;
+  color: blue;
+  background-color: yellow;
+  border: 1px solid red;
+  text-align:right;
+  line-height: 2;
+}
+
+/*글자 색상과 배경색/f

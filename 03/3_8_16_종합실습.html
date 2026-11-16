@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>종합실습</title>
+  <style>
+
+    /* 휴대폰: 위에서 아래로 쌓는다 */
+.page {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto 1fr auto;
+  grid-template-areas:
+    "header"
+    "side"
+    "main"
+    "footer";
+  min-height: 100vh;
+}
+
+/* 넓은 화면: 이름표 배치만 바꾼다 */
+@media (min-width: 768px) {
+  .page {
+    grid-template-columns: 160px 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+      "header header"
+      "side   main"
+      "footer footer";
+  }
+}
+.header {
+  background-color: rgb(26, 22, 59);
+  color: white;
+  font-weight: bold;
+  padding: 14px;
+}
+
+.main {
+  background-color: rgb(69, 69, 247);
+  color: white;
+  border-radius: 8px;
+  gap: 12px;
+  font-weight: bold;
+  padding: 12px;
+}
+
+.footer {
+  background-color: white;
+  border:2px solid rgb(201, 220, 249);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.side{
+  background-color: rgb(209, 216, 233);
+  padding: 12px;
+}
+
+.cards {
+  background-color: rgb(227, 235, 238);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-auto-rows: minmax(80px, auto);
+  gap: 12px;
+  padding: 12px;
+}
+
+.featured { grid-column: span 2; }
+
+@media (max-width: 400px) {
+  .featured { grid-column: auto; }
+}
+
+  </style>
+</head>
+<body>
+  <div class="header">보그쌤 쇼핑</div>
+  <div class="side">분류</div>
+  <div class="cards">
+  <div class="main">추천 상품</div>
+  <div class="footer">상품 1</div>
+  <div class="footer">상품 2</div>
+  <div class="footer">상품 3</div>
+  <div class="footer">상품 4</div>
+  <div class="footer">상품 5</div>
+  </div>
+  </div>
+</body>
+</html>
