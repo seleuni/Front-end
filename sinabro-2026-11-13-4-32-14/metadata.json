@@ -1,0 +1,6 @@
+{
+  "name": "시나브로 (SINABRO)",
+  "description": "모르는 사이에 조금씩 깊어지는 오리지널 캐릭터, 체크포인트 및 페어링 관계도 아카이브",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

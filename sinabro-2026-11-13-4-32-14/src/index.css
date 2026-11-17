@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Plus Jakarta Sans", "Noto Sans KR", system-ui, sans-serif;
+  --font-sans: "Noto Sans KR", "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-primary: #006194;
+  --color-primary-container: #007bb9;
+  --color-primary-fixed: #cce5ff;
+  --color-secondary: #00668a;
+  --color-secondary-fixed: #c4e7ff;
+  --color-tertiary: #6448b3;
+  --color-tertiary-fixed: #e8ddff;
+  --color-surface: #f7f9fb;
+  --color-surface-low: #f2f4f6;
+  --color-surface-card: #ffffff;
+  --color-ink: #191c1e;
+  --color-ink-muted: #3f4850;
+  --color-ink-subtle: #707881;
+  --color-hairline: #dfe4ea;
+  --color-danger: #ba1a1a;
+  --color-danger-soft: #ffdad6;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: var(--color-surface);
+    color: var(--color-ink);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    margin: 0;
+    overscroll-behavior-y: none;
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.pt-safe {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
